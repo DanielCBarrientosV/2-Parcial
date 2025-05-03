@@ -169,7 +169,6 @@ body {
   font-size: 1em;
   transition: background-color 0.2s ease;
 }
-
 #addCardBtn:hover {
   background-color: #7a1fa2;
 }
