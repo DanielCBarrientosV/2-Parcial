@@ -49,18 +49,17 @@ export default function Home() {
     const handleAddCard = () => {
         const now = new Date();
         const newCardData: CardData = {
-            id: `card-${Date.now()}-${Math.random()}`, // Genera un ID único (combina timestamp y aleatorio)
-            label: 'helper/note/active', // Etiqueta para las nuevas tarjetas (ejemplo)
-            number: cards.length + 1, // Número incremental simple
+            id: `card-${Date.now()}-${Math.random()}`, 
+            label: 'helper/note/active', 
+            number: cards.length + 1,
             title: `New Agenda Item ${cards.length + 1}`, // Título dinámico
             jiraId: `SAAS-${Math.floor(Math.random() * 9000 + 1000)}`, // ID aleatorio
             description: 'This is the description for the newly added card.',
-            date: `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`, // Fecha actual en formato legible
-            datetime: now.toISOString().split('T')[0], // Fecha actual en formato ISO 8601 (YYYY-MM-DD)
-            headerColor: getRandomColor(), // Obtiene un color aleatorio para el encabezado
+            date: `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`, 
+            datetime: now.toISOString().split('T')[0],
+            headerColor: getRandomColor(),
         };
 
-        // Actualiza el estado añadiendo la nueva tarjeta al array existente
         setCards(prevCards => [...prevCards, newCardData]);
     };
 
