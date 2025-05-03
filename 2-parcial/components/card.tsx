@@ -1,20 +1,19 @@
 import React from 'react';
-// Los estilos globales se importan en src/app/page.tsx o src/app/layout.tsx
-// y se aplican a través de las clases CSS.
+// No importamos estilos aquí si son globales en src/styles.css o globals.css
 
-// Definimos una interfaz para las props del componente Card
+// Interfaz para las props que este componente recibirá
 interface CardProps {
-  label: string;
-  number: number;
-  title: string;
-  jiraId: string; // El identificador tipo SAAS-0000
-  description: string;
-  date: string; // La fecha en formato legible para el usuario (ej: 3/8/2020)
-  datetime: string; // La fecha en formato ISO 8601 para el atributo <time> (ej: 2020-03-08)
-  headerColor: string; // El color de fondo del encabezado
+  label: string; // Etiqueta encima de la tarjeta
+  number: number; // Número en el círculo
+  title: string; // Título de la agenda
+  jiraId: string; // ID tipo SAAS-0000
+  description: string; // Descripción del cuerpo
+  date: string; // Fecha mostrada (ej: 3/8/2020)
+  datetime: string; // Fecha para el atributo <time> (ej: 2020-03-08)
+  headerColor: string; // Color de fondo del encabezado
+  // Si agregas el ícono, puedes añadir iconSrc: string; aquí
 }
 
-// Usamos React.FC (Function Component) con la interfaz de props
 const Card: React.FC<CardProps> = ({
   label,
   number,
@@ -24,15 +23,16 @@ const Card: React.FC<CardProps> = ({
   date,
   datetime,
   headerColor,
+  // iconSrc // Si lo agregaste
 }) => {
   return (
-    <> {/* Un fragmento de React para agrupar elementos sin un div extra */}
+    <> {/* Usamos un fragmento para incluir la etiqueta antes de la tarjeta */}
       {/* Etiqueta encima de la tarjeta */}
       <div className="card-label-container">
         <span className="label-icon">♦</span> {label}
       </div>
 
-      {/* La estructura de la tarjeta */}
+      {/* El contenedor principal de la tarjeta */}
       <article className="card">
         {/* Encabezado de la tarjeta */}
         <div className="card-header" style={{ backgroundColor: headerColor }}>
@@ -42,8 +42,11 @@ const Card: React.FC<CardProps> = ({
           </div>
           <div className="card-header-right">
             <span className="card-id">{jiraId}</span>
-            {/* Espacio reservado para el ícono (div vacío por ahora) */}
-            <div className="card-icon-placeholder"></div>
+            {/* Espacio reservado para el ícono. Usamos un div con tamaño fijo */}
+            <div className="card-icon-placeholder">
+              {/* Si tuvieras una imagen o SVG para el ícono, iría aquí */}
+              {/* <img src={iconSrc} alt="Icon" className="card-icon" /> */}
+            </div>
           </div>
         </div>
 
@@ -54,7 +57,7 @@ const Card: React.FC<CardProps> = ({
           {/* Pie de página de la tarjeta */}
           <div className="card-footer">
             <span className="card-last-updated">Last Updated</span>
-            {/* Usamos el formato ISO para el atributo datetime y el formato legible para el texto */}
+            {/* Usamos el formato ISO 8601 para el atributo dateTime y el formato legible para el texto */}
             <time dateTime={datetime} className="card-date">{date}</time>
           </div>
         </div>
