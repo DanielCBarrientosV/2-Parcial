@@ -23,11 +23,14 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <>
+      {/* CardLabel (Molécula) - Representa la etiqueta encima de la tarjeta */}
       <div className="card-label-container">
         <span className="label-icon">♦</span> {label}
       </div>
 
+      {/* La tarjeta completa (Organismo) */}
       <article className="card">
+        {/* CardHeader (Molécula) - Representa la parte superior de la tarjeta */}
         <div className="card-header" style={{ backgroundColor: headerColor }}>
           <div className="card-header-left">
             <span className="card-number">{number}</span>
@@ -39,9 +42,11 @@ const Card: React.FC<CardProps> = ({
           </div>
         </div>
 
+        {/* CardBody (Contiene átomos y otras moléculas) - Representa el cuerpo de la tarjeta */}
         <div className="card-body">
           <p className="card-description">{description}</p>
           <div className="card-divider"></div>
+          {/* CardFooter (Molécula) - Representa la parte inferior de la tarjeta */}
           <div className="card-footer">
             <span className="card-last-updated">Last Updated</span>
             <time dateTime={datetime} className="card-date">{date}</time>
